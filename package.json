@@ -1,0 +1,26 @@
+{
+  "name": "github-profile-generator",
+  "version": "1.0.0",
+  "description": "A command-line application that dynamically generates a PDF profile from a GitHub username",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "fs": "^0.0.1-security",
+    "inquirer": "^7.0.4",
+    "util": "^0.12.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexgignilliat/Github-Profile-Generator.git"
+  },
+  "author": "Alex Gignilliat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexgignilliat/Github-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/alexgignilliat/Github-Profile-Generator#readme"
+}
