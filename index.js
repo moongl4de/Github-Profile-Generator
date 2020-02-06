@@ -4,55 +4,85 @@ const fs = require("fs")
 const util = require("util")
 const htmlJS = require("./generateHTML")
 
-const writeFileAsync = util.promisify(fs.writeFile);
 
-async function init(){
-    console.log("YEET")
-}
+const userObject = {}
+
+mainFunction();
+
+function mainFunction(){
+
+const questions = [{
+    message: "What is your Github username?",
+    name: "username",
+    type: "input"
+},
+{
+    message: "What is your favorite color?",
+    choices: [ "Green", "Blue", "Pink", "Red"],
+    name: "color",
+    type: "list"
+}]
 
 prompts();
+ 
+//build out the userData object as we go and then feed it to the htmlJS function as a parameter
+const userData = {};
 
 function prompts(){
     return inquirer
-    .prompt({
-        message: "What is your Github username?",
-        name: "username",
-        type: "input",
-    })
-    .then(function({username}){
-        const URL = `https://api.github.com/users/${username}`
-        // const starsURL = `https://api.github.com/users/${username}/starred`
+    .prompt(questions)
+    .then(function(response){
+        const URL = `https://api.github.com/users/${response.username}`
+        console.log(response.color)
+        userData.color = response.color;
+        userData.username = response.username;
+        userData.picture = response.avatar_url;
+        userData.location = response.location;
+        userData.githubLink = response.html_url
+        userData.blog = response.blog
+        userData.bio = response.bio;
+        userData.followers = response.followers;
+        userData.following = response.following;
+        userData.publicRepos = response.public_repos
+        
     
+        return axios.get(URL);
 
-    axios.get(URL).then(function(response){
+    }).then(function(response){
+        const userLogin = response.data.login
         console.log(response.data)
-        const name = response.login
-        const avatar = response.avatar_url
-    })
+        console.log(response.color)
+        githubStarred(userLogin)
 
-});
+        
+    }).catch(err => {
+        throw err;
+    });
 }
 
 
-init();
+function githubStarred(input){
+    const queryUrl = `https://api.github.com/users/${input}/repos`;
+      axios.get(queryUrl).then(function(response) {
+        console.log(response)
+        let starCount = 0;
+        for(i=1; i<response.data.length; i++)
+            
+           starCount += response.data[i].stargazers_count
+           console.log(starCount)
+           console.log(input)
+           userData.stars = starCount
+           
+    }.finally(console.log(userData)
+    ));
+}
+}
 
 
 
-// init();
-
-// function init(){
-    
-// }
 
 
-// const questions = [
-  
-// ];
 
-// function writeToFile(fileName, data) {
- 
-// }
 
-// function init() {}
 
-// init();
+// module.exports = {
