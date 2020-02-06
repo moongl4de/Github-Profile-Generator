@@ -1,5 +1,5 @@
-const userData = require("./index.js")
-console.log(userData)
+// const userData = require("./index.js")
+// console.log(userData)
 
 const colors = {
     green: {
@@ -177,6 +177,8 @@ const colors = {
         </head>
         <body>
           <h1>${data.username}</h1>
+          <p>${data.location}</p>
+          <p>${data.stars}</p>
         </body>
         ` // The rest of our html goes here:
           }
