@@ -1,6 +1,3 @@
-// const userData = require("./index.js")
-// console.log(userData)
-
 const colors = {
     green: {
       wrapperBackground: "#E6E1C3",
@@ -29,6 +26,7 @@ const colors = {
   };
   
   function generateHTML(data) {
+
     return `<!DOCTYPE html>
   <html lang="en">
      <head>
@@ -37,7 +35,7 @@ const colors = {
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"/>
         <link href="https://fonts.googleapis.com/css?family=BioRhyme|Cabin&display=swap" rel="stylesheet">
-        <title>Document</title>
+        <title>${data.name}'s Profile</title>
         <style>
             @page {
               margin: 0;
@@ -176,11 +174,59 @@ const colors = {
         </style> 
         </head>
         <body>
-          <h1>${data.username}</h1>
-          <p>${data.location}</p>
-          <p>${data.stars}</p>
-        </body>
-        ` // The rest of our html goes here:
+        <div class="container">
+        <div class="wrapper">
+          <div class="photo-header">
+               <img src="${data.avatar_url}">
+               <h1>Hi!</h1>
+               <h2>My name is ${data.name}!</h2>
+               <h4>Currently @ ${data.company}</h4>
+               <div class="links-nav">
+                   <div class="nav-link">
+                      <a href="http://maps.google.com/?q=${data.location}" target="_blank">
+                      <i class="fas fa-location-arrow"></i> ${data.location}</a>
+                   </div>
+                   <div class="nav-link">
+                      <a href="${data.html_url}" target="_blank">
+                      <i class="fab fa-github"></i>GitHub</a>
+                   </div>
+                   <div class="nav-link">
+                      <a href="${data.blog}" target="_blank">
+                      <i class="fas fa-rss-square"></i> Blog</a>
+                   </div>
+               </div>
+           </div>
+           <div class="container">
+               <div class="row">
+                   <h5 class="col">${data.bio}</h5>
+               </div>
+               <div class="row">
+                   <div class="col">
+                       <div class=" card">
+                       <h4>Public Reposorities:</h4>
+                       <h5>${data.public_repos}</h5>
+                       </div>
+                       <div class="card">
+                       <h4>Starred Repos:</h4>
+                       <h5>${data.stars}</h5>
+                       </div>
+                   </div>
+                   <div class="col">
+                       <div class="card">
+                          <h4>Followers:</h4>
+                          <h5>${data.followers}</h5>
+                       </div>
+                       <div class="card">
+                          <h4>Following:</h4>
+                          <h5>${data.following}</h5>
+                       </div>
+                   </div>
+               </div>
+      </div>
+      <footer class="wrapper" style="height: 300px"></footer>
+      </div>
+</body>
+        `
           }
   
 
