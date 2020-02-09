@@ -8,11 +8,11 @@ This is a profile generator based on information pulled from Github. This was a 
 
 ## Installation
 
-Clone to your local machine and open in your favorite code editor to check it out! Or visit the deployed version at: [Github Profile Generator on GitHub Pages](https://alexgignilliat.github.io/Github-Profile-Generator/)
+Clone to your machine, install the needed packages and type 'node index.js' to start the generator.
 
 ## Technologies Utilized
 
-HTML5, CSS3, Bootstrap 4, JavaScript, Node.js, Html-pdf, Axios, Inquirer
+HTML5, CSS3, JavaScript, Node.js, Html-pdf, Axios, Inquirer
 
 ## Information, Important Notes, etc
 
